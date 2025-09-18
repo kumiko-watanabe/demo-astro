@@ -1,33 +1,38 @@
 ---
-// Component Imports
-import Counter from '../components/Counter.vue';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Features from '../components/Features.astro';
+import Highlights from '../components/Highlights.astro';
+import Speakers from '../components/Speakers.astro';
+import Schedule from '../components/Schedule.astro';
+import FloorMap from '../components/FloorMap.astro';
+import FAQ from '../components/FAQ.astro';
+import Contact from '../components/Contact.astro';
+import FollowCTA from '../components/FollowCTA.astro';
+import '../styles/global.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<Counter client:visible>
-				<h1>Hello, Vue!</h1>
-			</Counter>
-		</main>
-	</body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Conference LP</title>
+</head>
+<body class="bg-gray-900 text-white">
+    <Header />
+    <main>
+        <Hero />
+        <About />
+        <Features />
+        <Highlights />
+        <Speakers />
+        <Schedule />
+        <FloorMap />
+        <FAQ />
+        <Contact />
+    </main>
+    <FollowCTA />
+</body>
 </html>
