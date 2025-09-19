@@ -1,27 +1,37 @@
-<section class="py-20 px-4 text-center">
-  <h2 class="text-4xl font-bold mb-12 text-white">登壇者紹介</h2>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-    
-    <div class="bg-gray-800 p-6 rounded-lg text-center transform hover:scale-105 transition-transform duration-300">
-      <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Taro Yamada" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-teal-400">
-      <h3 class="text-2xl font-bold text-white">山田 太郎</h3>
-      <p class="text-teal-400 mb-2">AI / 機械学習</p>
-      <p class="text-gray-300">AI研究の第一人者。特に自然言語処理と画像認識の分野で世界的に評価されている。趣味はヨガ。</p>
+---
+const speakers = [
+  {
+    name: '山田 太郎',
+    title: 'AIエンジニア',
+    bio: 'AIの分野で10年以上の経験を持つ。特に自然言語処理と画像認識が専門。',
+    image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    name: '鈴木 一郎',
+    title: 'VR/ARエバンジェリスト',
+    bio: '大手IT企業でVR/ARプラットフォームの開発を主導。ビジネスへの応用事例を多数持つ。',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    name: '佐藤 花子',
+    title: 'Web3デベロッパー',
+    bio: 'ブロックチェーン技術と分散型アプリケーションの専門家。スマートコントラクトの開発経験が豊富。',
+    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  }
+];
+---
+<section id="speakers" class="py-20 px-4">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-12">登壇者紹介</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      {speakers.map(speaker => (
+        <div class="bg-gray-800 rounded-lg p-6 text-white">
+          <img src={speaker.image} alt={speaker.name} class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+          <h3 class="text-2xl font-bold mb-2">{speaker.name}</h3>
+          <p class="text-teal-400 mb-2">{speaker.title}</p>
+          <p class="text-gray-400">{speaker.bio}</p>
+        </div>
+      ))}
     </div>
-
-    <div class="bg-gray-800 p-6 rounded-lg text-center transform hover:scale-105 transition-transform duration-300">
-      <img src="https://i.pravatar.cc/150?u=a042581f4e29026705d" alt="Hanako Sato" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-teal-400">
-      <h3 class="text-2xl font-bold text-white">佐藤 花子</h3>
-      <p class="text-teal-400 mb-2">Web3 / ブロックチェーン</p>
-      <p class="text-gray-300">分散型アプリケーション（dApps）の開発者として数々のプロジェクトを成功に導く。ブロックチェーンの社会実装を目指す。</p>
-    </div>
-
-    <div class="bg-gray-800 p-6 rounded-lg text-center transform hover:scale-105 transition-transform duration-300">
-      <img src="https://i.pravatar.cc/150?u=a042581f4e29026706d" alt="Ichiro Suzuki" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-teal-400">
-      <h3 class="text-2xl font-bold text-white">鈴木 一郎</h3>
-      <p class="text-teal-400 mb-2">メタバース / VR</p>
-      <p class="text-gray-300">大手ゲーム会社でVRコンテンツのディレクターを務める。仮想空間における新たなユーザー体験を追求している。</p>
-    </div>
-    
   </div>
 </section>
