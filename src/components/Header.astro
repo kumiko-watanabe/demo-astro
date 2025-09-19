@@ -2,7 +2,7 @@
 ---
 <header class="fixed top-0 left-0 w-full p-4 bg-black bg-opacity-50 z-50">
   <nav class="container mx-auto flex justify-between items-center">
-    <div class="text-white font-bold text-xl"><a href="#">IT CONFERENCE 2024</a></div>
+    <div class="text-white font-bold text-xl"><a href="/">IT CONFERENCE 2024</a></div>
     <ul class="hidden md:flex space-x-8">
       <li><a href="#about" class="text-white font-bold hover:text-gray-300">About</a></li>
       <li><a href="#features" class="text-white font-bold hover:text-gray-300">Features</a></li>
@@ -12,16 +12,15 @@
       <li><a href="#faq" class="text-white font-bold hover:text-gray-300">FAQ</a></li>
       <li><a href="#contact" class="text-white font-bold hover:text-gray-300">Contact</a></li>
     </ul>
-    <button id="menu-btn" class="block md:hidden text-white z-50">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    <button id="menu-btn" class="md:hidden relative w-8 h-8 z-50">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
     </button>
   </nav>
 </header>
 
-<div id="menu" class="hidden fixed inset-0 bg-gray-950 z-50 flex flex-col items-center justify-center">
-    <button id="close-menu-btn" class="absolute top-5 right-5 text-white">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-    </button>
+<div id="menu" class="hidden fixed inset-0 bg-gray-950 z-40 flex flex-col items-center justify-center">
     <ul class="flex flex-col items-center space-y-8 text-3xl">
         <li><a href="#about" class="text-white font-bold hover:text-teal-400 transition-colors">About</a></li>
         <li><a href="#features" class="text-white font-bold hover:text-teal-400 transition-colors">Features</a></li>
@@ -33,24 +32,50 @@
     </ul>
 </div>
 
+<style>
+  .line {
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    left: 4px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform-origin: center;
+  }
+  .line1 { top: 8px; }
+  .line2 { top: 15px; }
+  .line3 { top: 22px; }
+
+  #menu-btn.menu-open .line1 {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #menu-btn.menu-open .line2 {
+    opacity: 0;
+  }
+  #menu-btn.menu-open .line3 {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+</style>
+
 <script>
   const menuBtn = document.getElementById('menu-btn');
   const menu = document.getElementById('menu');
-  const closeMenuBtn = document.getElementById('close-menu-btn');
   const menuLinks = menu.querySelectorAll('a');
-
-  function openMenu() {
-    menu.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+  
+  function toggleMenu() {
+    const isMenuOpen = menu.classList.toggle('hidden');
+    menuBtn.classList.toggle('menu-open');
+    document.body.style.overflow = isMenuOpen ? '' : 'hidden';
   }
-
+  
   function closeMenu() {
-    menu.classList.add('hidden');
-    document.body.style.overflow = '';
+    if (!menu.classList.contains('hidden')) {
+      toggleMenu();
+    }
   }
 
-  menuBtn.addEventListener('click', openMenu);
-  closeMenuBtn.addEventListener('click', closeMenu);
+  menuBtn.addEventListener('click', toggleMenu);
   menuLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
